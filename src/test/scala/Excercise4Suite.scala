@@ -24,4 +24,13 @@ class Excercise4Suite extends FunSuite {
     val test = Excercise4.compose((a: Int) => a * 2, (s: String) => s.length())
     assert(test("alma") == 8)
   }
+
+  test("compose in standard library") { 
+    val f : Function1[Int, Int] = a => a * 2
+    val g : Function1[String, Int] = s => s.length()
+    val h = f compose g
+    assert(h("alma") == 8) 
+    val i = g andThen f
+    assert(i("alma")  == 8)   
+  }
 }
