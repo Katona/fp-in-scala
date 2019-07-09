@@ -1,4 +1,4 @@
-package scala.chapter3
+package chapter3
 
 sealed trait List[+A]
 case object Nil extends List[Nothing]
