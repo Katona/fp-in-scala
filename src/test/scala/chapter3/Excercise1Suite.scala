@@ -24,9 +24,9 @@ class Excercise1Suite extends FunSuite {
 
   test("test pattern matching") {
       val x = List(1, 2, 3, 4, 5) match {
-          case Cons(x, Cons(2, Cons(4, _))) => x
+          case Cons(e, Cons(2, Cons(4, _))) => e
           case Nil => 42
-          case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
+          case Cons(e, Cons(y, Cons(3, Cons(4, _)))) => e + y
           case _ => 101
       }
 
