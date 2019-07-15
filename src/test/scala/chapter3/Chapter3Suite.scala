@@ -52,6 +52,7 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise4.dropWhile(List(1))(_ => true) == Nil)
     assert(Excercise4.dropWhile(List(1))(_ => false) == List(1))
     assert(Excercise4.dropWhile(List(1, 2, 3, 4, 5))(_ => true) == Nil)
+    assert(Excercise4.dropWhile(List(1, 2, 3, 4, 5))(_ => false) == List(1, 2, 3, 4, 5))
     assert(Excercise4.dropWhile(List(1, 2, 3, 4, 5))(i => i < 3 ) == List(3, 4, 5))
   }
 }
