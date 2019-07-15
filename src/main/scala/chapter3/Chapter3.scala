@@ -24,7 +24,7 @@ object Excercise3 {
 
   def drop[A](list: List[A], n: Int): List[A] = list match {
     case Nil => Nil
-    case Cons(h, t) if n > 0 => drop(t, n - 1)
+    case Cons(_, t) if n > 0 => drop(t, n - 1)
     case l: List[A] => l
   }
 
