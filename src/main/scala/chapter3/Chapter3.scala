@@ -27,6 +27,11 @@ object Excercise3 {
     case Cons(h, t) if n > 0 => drop(t, n - 1)
     case l: List[A] => l
   }
+
+  def setHead[A](list: List[A], newHead: A): List[A] = list match {
+    case Nil => Nil
+    case Cons(_, t) => Cons(newHead, t)
+  }
 }
 
 object Excercise4 {

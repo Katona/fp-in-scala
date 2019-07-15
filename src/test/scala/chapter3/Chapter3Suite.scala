@@ -40,6 +40,10 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise2.tail(List(1, 2, 3)) == List(2, 3))
   }
 
+  test("setHead") {
+    assert(Excercise3.setHead(List(1, 2), 5) == List(5, 2))
+  }
+
   test("drop") {
     assert(Excercise3.drop(Nil, 1) == Nil)
     assert(Excercise3.drop(List(1), 1) == Nil)
