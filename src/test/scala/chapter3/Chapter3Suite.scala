@@ -64,4 +64,13 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise5.init(List(1, 2)) == List(1))
     assert(Excercise5.init(List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4))
   }
+
+  test("foldRight") {
+    assert(Excercise7.foldRight(List(1, 2), 1)(_*_) == 2)
+    assert(Excercise7.foldRightShortCircuit(List(0, 1, 2, 3), 1, 0)(_*_) == 0)
+  }
+
+  test("Excercise8") {
+    assert(Excercise7.foldRight(List(1, 2, 3), Nil: List[Int])(Cons(_,_)) == List(1, 2, 3))
+  }
 }

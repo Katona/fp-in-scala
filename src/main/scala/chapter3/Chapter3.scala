@@ -49,3 +49,19 @@ object Excercise5 {
     case Cons(h, t) => Cons(h, init(t))
   }
 }
+
+object Excercise7 {
+  def foldRight[A, B](l: List[A], z: B)(f: (A, B) => B): B = l match {
+    case Nil => z
+    case Cons(h, t) => f(h, foldRight(t, z)(f))
+  }
+  def foldRightShortCircuit[A, B](l: List[A], z: B, n: A)(f: (A, B) => B): B = l match {
+    case Nil => z
+    case Cons(h, t) if h != n => f(h, foldRightShortCircuit(t, z, n)(f))
+    case Cons(h, t) if h == n =>
+      println("short circuit", t)
+      f(h, z)
+  }
+  def prod(l: List[Double]) =
+    foldRight(l, 1.0)(_ * _)
+}
