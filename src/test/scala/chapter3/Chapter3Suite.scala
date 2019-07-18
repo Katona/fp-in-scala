@@ -73,4 +73,10 @@ class Chapter3Suite extends FunSuite {
   test("Excercise8") {
     assert(Excercise7.foldRight(List(1, 2, 3), Nil: List[Int])(Cons(_,_)) == List(1, 2, 3))
   }
+
+  test("Excercise9 - length with foldRight") {
+    assert(Excercise7.foldRight(List(1, 2, 3), 0)((_, l) => l + 1) == 3)
+    assert(Excercise7.foldRight(List(1), 0)((_, l) => l + 1) == 1)
+    assert(Excercise7.foldRight(Nil, 0)((_, l) => l + 1) == 0)
+  }
 }
