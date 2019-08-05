@@ -79,4 +79,21 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise7.foldRight(List(1), 0)((_, l) => l + 1) == 1)
     assert(Excercise7.foldRight(Nil, 0)((_, l) => l + 1) == 0)
   }
+
+  test("Excercise10") {
+    assert(Excercise10.foldLeft(List[Int](), 0)(_+_) == 0)
+    assert(Excercise10.foldLeft(List(1, 2), 0)(_+_) == 3)
+  }
+
+  test("foldRight vs foldLeft") {
+    def sum = (a: Int, b: Int) => {
+      println(a, b)
+      a + b
+    }
+    println("foldRight")
+    Excercise7.foldRight(List(1, 2, 3, 4), 0)(sum)
+    println("foldLeft")
+    Excercise10.foldLeft(List(1, 2, 3, 4), 0)(sum)
+  }
+
 }

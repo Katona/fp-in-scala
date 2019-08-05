@@ -65,3 +65,10 @@ object Excercise7 {
   def prod(l: List[Double]) =
     foldRight(l, 1.0)(_ * _)
 }
+
+object Excercise10 {
+  def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B = l match {
+    case Nil => z
+    case Cons(h, t) => foldLeft(t, f(z, h))(f)
+  }
+}
