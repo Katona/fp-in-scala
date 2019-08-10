@@ -72,3 +72,12 @@ object Excercise10 {
     case Cons(h, t) => foldLeft(t, f(z, h))(f)
   }
 }
+
+object Excercise11 {
+  def sum(l: List[Int]): Int = Excercise10.foldLeft(l, 0)(_+_)
+  def product(l: List[Int]): Int = l match {
+    case Nil => 0
+    case Cons(h, _) => Excercise10.foldLeft(l, 1)(_*_)
+  }
+  def length(l: List[Int]): Int = Excercise10.foldLeft(l, 0)((l, _) => l + 1)
+}

@@ -96,4 +96,15 @@ class Chapter3Suite extends FunSuite {
     Excercise10.foldLeft(List(1, 2, 3, 4), 0)(sum)
   }
 
+  test("Excercise11 - functions based on foldLeft") {
+    assert(Excercise11.sum(List[Int]()) == 0)
+    assert(Excercise11.sum(List(1, 2)) == 3)
+
+    assert(Excercise11.product(List()) == 0)
+    assert(Excercise11.product(List(1, 2)) == 2)
+
+    assert(Excercise11.length(List()) == 0)
+    assert(Excercise11.length(List(1, 2, 3)) == 3)
+  }
+
 }
