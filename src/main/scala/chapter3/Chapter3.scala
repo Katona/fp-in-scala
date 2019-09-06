@@ -84,4 +84,10 @@ object Excercise11 {
 
 object Excercise12 {
   def reverse[A](l: List[A]): List[A] = Excercise10.foldLeft(l, List[A]()){ (reversed: List[A], h: A) => Cons(h, reversed) }
+
+}
+
+object Excercise13 {
+  def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B = Excercise7.foldRight(Excercise12.reverse(l), z){(a, b) => f(b, a)}
+  def foldRight[A, B](l: List[A], z: B)(f: (A, B) => B): B = Excercise10.foldLeft(Excercise12.reverse(l), z){(b, a) => f(a, b)}
 }

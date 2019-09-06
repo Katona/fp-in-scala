@@ -110,4 +110,21 @@ class Chapter3Suite extends FunSuite {
   test("Excercise12 - reverse") {
     assert(Excercise12.reverse(List(1, 2, 3)) == List(3, 2, 1))
   }
+
+  test("Excercise13 - foldLeft based on foldRight") {
+    println("foldLeft based on foldRight")
+    Excercise13.foldLeft(List(1, 2, 3), 0){ (f, a) => 
+      println(f, a)
+      0
+    }
+  }
+
+  test("Excercise13 - foldRight based on foldLeft") {
+    println("foldRight based on foldLeft")
+    Excercise13.foldRight(List(1, 2, 3), 0){ (f, a) => 
+      println(f, a)
+      f + a
+    }
+  }
+
 }
