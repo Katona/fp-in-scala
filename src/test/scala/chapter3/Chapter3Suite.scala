@@ -107,4 +107,7 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise11.length(List(1, 2, 3)) == 3)
   }
 
+  test("Excercise12 - reverse") {
+    assert(Excercise12.reverse(List(1, 2, 3)) == List(3, 2, 1))
+  }
 }

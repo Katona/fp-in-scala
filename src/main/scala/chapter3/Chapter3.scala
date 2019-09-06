@@ -81,3 +81,7 @@ object Excercise11 {
   }
   def length(l: List[Int]): Int = Excercise10.foldLeft(l, 0)((l, _) => l + 1)
 }
+
+object Excercise12 {
+  def reverse[A](l: List[A]): List[A] = Excercise10.foldLeft(l, List[A]()){ (reversed: List[A], h: A) => Cons(h, reversed) }
+}
