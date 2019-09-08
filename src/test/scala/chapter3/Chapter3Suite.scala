@@ -148,4 +148,8 @@ class Chapter3Suite extends FunSuite {
   test("Excercise15 - flatMap") {
     assert(Excercise15.flatMap(List(List(1, 2), List(3, 4))) == List(1, 2, 3, 4))
   }
+
+  test("Excercise16 - increase all element by one") {
+    assert(Excercise16.addOne(List(1, 2, 3)) == List(2, 3, 4))
+  }
 }

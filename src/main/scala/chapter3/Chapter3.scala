@@ -103,5 +103,9 @@ object Excercise14 {
 }
 
 object Excercise15 {
-  def flatMap[A](l: List[List[A]]) = Excercise7.foldRight(l, Nil:List[A]((a, acc) => Excercise14.append(a, acc))
+  def flatMap[A](l: List[List[A]]) = Excercise7.foldRight(l, Nil:List[A])((a, acc) => Excercise14.append(a, acc))
+}
+
+object Excercise16 {
+  def addOne(l: List[Int]): List[Int] = Excercise7.foldRight(l, Nil: List[Int])((a, acc) => Cons(a + 1, acc))
 }
