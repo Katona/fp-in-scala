@@ -113,3 +113,13 @@ object Excercise16 {
 object Excercise17 {
   def toString(l: List[Double]): List[String] = Excercise7.foldRight(l, Nil: List[String])((a, acc) => Cons(a.toString, acc))
 }
+
+object Excercise18 {
+  def map[A, B](l: List[A])(f: A => B): List[B] = 
+    Excercise7.foldRight(l, Nil: List[B])((a, acc) => Cons(f(a), acc))
+}
+
+object Excercise19 {
+  def filter[A](as: List[A])(f: A => Boolean): List[A] =
+    Excercise7.foldRight(as, Nil: List[A])((a, acc) => if (f(a) == true) Cons(a, acc) else acc)
+}

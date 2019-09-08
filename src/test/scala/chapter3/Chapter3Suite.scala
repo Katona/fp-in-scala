@@ -156,4 +156,12 @@ class Chapter3Suite extends FunSuite {
   test("Excercise17 - convert to string all elements") {
     assert(Excercise17.toString(List(1.1, 2.2, 3.3)) == List("1.1", "2.2", "3.3"))
   }
+
+  test("Excercise18 - map") {
+    assert(Excercise18.map(List(1, 2, 3))(_*2) == List(2, 4, 6))
+  }
+
+  test("Excercise19 - filter") {
+    assert(Excercise19.filter(List(1, 2, 3, 4))(a => a % 2 == 0) == List(2, 4))
+  }
 }
