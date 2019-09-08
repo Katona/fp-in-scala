@@ -164,4 +164,8 @@ class Chapter3Suite extends FunSuite {
   test("Excercise19 - filter") {
     assert(Excercise19.filter(List(1, 2, 3, 4))(a => a % 2 == 0) == List(2, 4))
   }
+
+  test("Excercise20 - flatMap") {
+    assert(Excercise20.flatMap(List(1, 2, 3, 4))(a => if (a % 2 == 0) List(a) else Nil) == List(2, 4))
+  }
 }

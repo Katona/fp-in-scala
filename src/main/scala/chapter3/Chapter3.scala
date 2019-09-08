@@ -123,3 +123,8 @@ object Excercise19 {
   def filter[A](as: List[A])(f: A => Boolean): List[A] =
     Excercise7.foldRight(as, Nil: List[A])((a, acc) => if (f(a) == true) Cons(a, acc) else acc)
 }
+
+object Excercise20 {
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    Excercise7.foldRight(as, Nil: List[B])((a, acc) => Excercise14.append(f(a), acc))
+}
