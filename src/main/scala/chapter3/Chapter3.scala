@@ -109,3 +109,7 @@ object Excercise15 {
 object Excercise16 {
   def addOne(l: List[Int]): List[Int] = Excercise7.foldRight(l, Nil: List[Int])((a, acc) => Cons(a + 1, acc))
 }
+
+object Excercise17 {
+  def toString(l: List[Double]): List[String] = Excercise7.foldRight(l, Nil: List[String])((a, acc) => Cons(a.toString, acc))
+}

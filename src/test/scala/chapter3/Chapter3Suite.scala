@@ -152,4 +152,8 @@ class Chapter3Suite extends FunSuite {
   test("Excercise16 - increase all element by one") {
     assert(Excercise16.addOne(List(1, 2, 3)) == List(2, 3, 4))
   }
+
+  test("Excercise17 - convert to string all elements") {
+    assert(Excercise17.toString(List(1.1, 2.2, 3.3)) == List("1.1", "2.2", "3.3"))
+  }
 }
