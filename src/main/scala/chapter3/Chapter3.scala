@@ -128,3 +128,17 @@ object Excercise20 {
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
     Excercise7.foldRight(as, Nil: List[B])((a, acc) => Excercise14.append(f(a), acc))
 }
+
+object Excercise22 {
+  def zipWith(l1: List[Int], l2: List[Int]): List[Int] = {
+    val buf = new collection.mutable.ListBuffer[Int]
+    def go(l1: List[Int], l2: List[Int]): Unit = (l1, l2) match {
+      case (Cons(h1, Nil), Cons(h2, Nil)) => buf += h1 + h2 
+      case (Cons(h1, Nil), Cons(h2, t2)) => buf += h1 + h2; go(t2, List(0))
+      case (Cons(h1, t1), Cons(h2, Nil)) => buf += h1 + h2; go(t1, List(0)) 
+      case (Cons(h1, t1), Cons(h2, t2)) => println(l1, l2); buf += h1 + h2; go(t1, t2)
+    }
+    go(l1, l2)
+    List(buf.toList: _*)
+  }
+}
