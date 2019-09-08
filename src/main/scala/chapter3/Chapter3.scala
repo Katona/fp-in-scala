@@ -90,4 +90,10 @@ object Excercise12 {
 object Excercise13 {
   def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B = Excercise7.foldRight(Excercise12.reverse(l), z){(a, b) => f(b, a)}
   def foldRight[A, B](l: List[A], z: B)(f: (A, B) => B): B = Excercise10.foldLeft(Excercise12.reverse(l), z){(b, a) => f(a, b)}
+
+  def foldLeft2[A, B](l: List[A], z: B)(f: (B, A) => B): B =
+    foldRight(l, (b: B) => b)((a, g) => (acc: B) => g(f(acc, a)))(z)
+  
+  def foldRight2[A, B](l: List[A], z: B)(f: (A, B) => B): B =
+    foldLeft(l, (b: B) => b)((g, a) => (acc: B) => g(f(a, acc)))(z)
 }

@@ -127,4 +127,18 @@ class Chapter3Suite extends FunSuite {
     }
   }
 
+  test("Excercise13 - foldLeft2") {
+    Excercise13.foldLeft2(List(1, 2, 3), 0) { (acc, a) =>
+      println(acc, a)
+      acc + a
+    }
+  }
+
+    test("Excercise13 - foldRight2") {
+    Excercise13.foldRight2(List(1, 2, 3), 0) { (a, acc) =>
+      println(acc, a)
+      acc + a
+    }
+  }
+
 }
