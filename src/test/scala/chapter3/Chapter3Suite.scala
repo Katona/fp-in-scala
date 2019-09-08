@@ -173,4 +173,9 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise22.zipWith(List(1, 2, 3), List(2, 3, 4)) == List(3, 5, 7))
     assert(Excercise22.zipWith(List(1, 2), List(2, 3, 4)) == List(3, 5, 4))
   }
+
+  test("Excercise23 - zipWith") {
+    assert(Excercise23.zipWith(List(1, 2, 3), List(2, 3, 4))(_ + _) == List(3, 5, 7))
+    assert(Excercise23.zipWith(List(1, 2), List(2, 3, 4))(_ + _) == List(3, 5, 4))
+  }
 }

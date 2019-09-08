@@ -142,3 +142,17 @@ object Excercise22 {
     List(buf.toList: _*)
   }
 }
+
+object Excercise23 {
+  def zipWith[A](l1: List[A], l2: List[A])(f: (A, A) => A): List[A] = {
+    val buf = new collection.mutable.ListBuffer[A]
+    def go(l1: List[A], l2: List[A]): Unit = (l1, l2) match {
+      case (Nil, Nil) => 
+      case (Cons(h1, t1), Nil) => buf += h1; go(t1, Nil)
+      case (Nil, Cons(h2, t2)) => buf += h2; go(t2, Nil)
+      case (Cons(h1, t1), Cons(h2, t2)) => buf += f(h1, h2); go(t1, t2)
+    }
+    go(l1, l2)
+    List(buf.toList: _*)
+  }
+}
