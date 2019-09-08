@@ -97,3 +97,7 @@ object Excercise13 {
   def foldRight2[A, B](l: List[A], z: B)(f: (A, B) => B): B =
     foldLeft(l, (b: B) => b)((g, a) => (acc: B) => g(f(a, acc)))(z)
 }
+
+object Excercise14 {
+  def append[A](l: List[A], e: A) = Excercise7.foldRight(l, List(e))((a, acc) => Cons(a, acc))
+}

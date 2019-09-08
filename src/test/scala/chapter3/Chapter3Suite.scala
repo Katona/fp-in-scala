@@ -134,11 +134,14 @@ class Chapter3Suite extends FunSuite {
     }
   }
 
-    test("Excercise13 - foldRight2") {
+  test("Excercise13 - foldRight2") {
     Excercise13.foldRight2(List(1, 2, 3), 0) { (a, acc) =>
       println(acc, a)
       acc + a
     }
   }
 
+  test("Excercise14 - append based on foldRight") {
+    assert(Excercise14.append(List(1, 2, 3), 4) == List(1, 2, 3, 4))
+  }
 }
