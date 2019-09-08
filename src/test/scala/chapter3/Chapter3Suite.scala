@@ -142,6 +142,10 @@ class Chapter3Suite extends FunSuite {
   }
 
   test("Excercise14 - append based on foldRight") {
-    assert(Excercise14.append(List(1, 2, 3), 4) == List(1, 2, 3, 4))
+    assert(Excercise14.append(List(1, 2, 3), List(4)) == List(1, 2, 3, 4))
+  }
+
+  test("Excercise15 - flatMap") {
+    assert(Excercise15.flatMap(List(List(1, 2), List(3, 4))) == List(1, 2, 3, 4))
   }
 }
