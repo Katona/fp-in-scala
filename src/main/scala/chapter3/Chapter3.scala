@@ -156,3 +156,15 @@ object Excercise23 {
     List(buf.toList: _*)
   }
 }
+
+object Excercise24 {
+  def hasSubsequence[A](origSup: List[A], origSub: List[A]): Boolean = {
+    def go[A](sup: List[A], sub: List[A]): Boolean = (sup, sub) match {
+      case (_, Nil) => true
+      case (Nil, _) => false
+      case (Cons(hsup, tsup), Cons(hsub, tsub)) if (hsup == hsub) => go(tsup, tsub)
+      case (Cons(hsup, tsup), Cons(hsub, tsub)) if (hsup != hsub) => go(tsup, origSub)
+    }
+    go(origSup, origSub)
+  }
+}
