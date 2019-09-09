@@ -187,4 +187,10 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise24.hasSubsequence(List(1, 2, 3, 4), List(2, 4)) == false)
     assert(Excercise24.hasSubsequence(List(1, 2, 3, 4), List(3, 4, 5)) == false)
   }
+
+  test("Excercise25 - size") {
+    assert(Excercise25.size(Leaf(2)) == 1)
+    assert(Excercise25.size(Branch(Leaf(1), Leaf(2))) == 3)
+    assert(Excercise25.size(Branch(Leaf(1), Branch(Leaf(1), Leaf(2)))) == 5)
+  }
 }
