@@ -179,3 +179,10 @@ object Excercise25 {
     case Branch(l, r) => size(l) + size(r) + 1
   }
 }
+
+object Excercise26 {
+  def maximum(tree: Tree[Int]): Int = tree match {
+    case Leaf(v) => v
+    case Branch(l, r) => maximum(l).max(maximum(r))
+  }
+}
