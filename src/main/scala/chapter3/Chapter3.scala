@@ -196,3 +196,10 @@ object Excercise27 {
     go(tree, 1)
   }
 }
+
+object Excercise28 {
+  def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = tree match {
+    case Leaf(v) => Leaf[B](f(v))
+    case Branch(l, r) => Branch[B](map(l)(f), map(r)(f)) 
+  }
+}

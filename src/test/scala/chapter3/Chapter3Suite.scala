@@ -219,4 +219,12 @@ class Chapter3Suite extends FunSuite {
       )
     ) == 4)
   }
+
+  test("Excercise28 - map") {
+    assert(Excercise28.map(Leaf(1))(_ * 2) == Leaf(2))
+    assert(Excercise28.map(Branch(Leaf(1), Leaf(2)))(_ * 2) == Branch(Leaf(2), Leaf(4)))
+    assert(Excercise28.map(Branch(Leaf(1), Branch(Leaf(1), Leaf(12))))(_ * 2) == 
+      Branch(Leaf(2), Branch(Leaf(2), Leaf(24)))  
+    )
+  }
 }
