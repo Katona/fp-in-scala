@@ -227,4 +227,19 @@ class Chapter3Suite extends FunSuite {
       Branch(Leaf(2), Branch(Leaf(2), Leaf(24)))  
     )
   }
+
+  test("Excercise29 - fold") {
+    val testTree = Branch(Leaf(1), Branch(Leaf(1), Leaf(4)))
+    
+    val size = Excercise29.fold(testTree)(_ => 1, (l: Int, r: Int) => l + r + 1)
+    assert(size == 5) 
+  
+    val max = Excercise29.fold(testTree)(v => v, (l: Int, r: Int) => l max r)
+    assert(max == 4)
+
+    val depth = Excercise29.fold(testTree)(v => 1, (l: Int, r: Int) => (l max r) + 1)
+    assert(depth == 3)
+  }
+
+
 }

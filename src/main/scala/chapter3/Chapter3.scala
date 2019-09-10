@@ -188,12 +188,9 @@ object Excercise26 {
 }
 
 object Excercise27 {
-  def depth[A](tree: Tree[A]): Int = {
-    def go[A](tree: Tree[A], level: Int): Int = tree match {
-      case Leaf(_) => level
-      case Branch(l, r) => go(l, level + 1).max(go(r, level + 1))
-    }
-    go(tree, 1)
+  def depth[A](tree: Tree[A]): Int = tree match {
+    case Leaf(_) => 1
+    case Branch(l, r) => depth(l).max(depth(r)) + 1
   }
 }
 
@@ -201,5 +198,12 @@ object Excercise28 {
   def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = tree match {
     case Leaf(v) => Leaf[B](f(v))
     case Branch(l, r) => Branch[B](map(l)(f), map(r)(f)) 
+  }
+}
+
+object Excercise29 {
+  def fold[A, B](tree: Tree[A])(f: A => B, c: (B, B) => B): B = tree match {
+    case Leaf(v) => f(v)
+    case Branch(l, r) => c(fold(l)(f, c), fold(r)(f, c))
   }
 }
