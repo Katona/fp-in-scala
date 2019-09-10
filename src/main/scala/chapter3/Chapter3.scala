@@ -186,3 +186,13 @@ object Excercise26 {
     case Branch(l, r) => maximum(l).max(maximum(r))
   }
 }
+
+object Excercise27 {
+  def depth[A](tree: Tree[A]): Int = {
+    def go[A](tree: Tree[A], level: Int): Int = tree match {
+      case Leaf(_) => level
+      case Branch(l, r) => go(l, level + 1).max(go(r, level + 1))
+    }
+    go(tree, 1)
+  }
+}

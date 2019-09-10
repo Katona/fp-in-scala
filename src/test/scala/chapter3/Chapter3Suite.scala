@@ -194,9 +194,29 @@ class Chapter3Suite extends FunSuite {
     assert(Excercise25.size(Branch(Leaf(1), Branch(Leaf(1), Leaf(2)))) == 5)
   }
 
-  test("Excercise26 - size") {
+  test("Excercise26 - maximum") {
     assert(Excercise26.maximum(Leaf(1)) == 1)
     assert(Excercise26.maximum(Branch(Leaf(1), Leaf(2))) == 2)
     assert(Excercise26.maximum(Branch(Leaf(1), Branch(Leaf(1), Leaf(12)))) == 12)
+  }
+
+  test("Excercise27 - depth") {
+    assert(Excercise27.depth(Leaf(1)) == 1)
+    assert(Excercise27.depth(Branch(Leaf(1), Leaf(2))) == 2)
+    assert(Excercise27.depth(Branch(Leaf(1), Branch(Leaf(1), Leaf(12)))) == 3)
+    assert(Excercise27.depth(
+      Branch(
+        Branch(
+          Branch(
+            Leaf(1),
+            Leaf(2)),
+          Leaf(1)
+        ), 
+        Branch(
+          Leaf(1), 
+          Leaf(12)
+        )
+      )
+    ) == 4)
   }
 }
