@@ -27,3 +27,11 @@ case object None extends Option[Nothing] {
     def orElse[B >: Nothing](ob: => Option[B]): Option[B] = ob
     def filter(f: Nothing => Boolean): Option[Nothing] = None
 }
+
+object Excercise2 {
+    def mean(xs: Seq[Double]): Option[Double] = if (xs.length > 0 ) Some(xs.sum / xs.length) else None
+    
+    def variance(xs: Seq[Double]): Option[Double] = {
+        mean(xs).flatMap(m => mean(xs.map(x => math.pow(x - m, 2))))
+    }
+}

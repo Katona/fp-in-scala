@@ -62,4 +62,9 @@ class Chapter4Suite extends FunSuite {
       assert(none.filter(_ => true) == None)
       assert(none.filter(_ => false) == None)
   }
+
+  test("Excercise2 - variance") {
+      assert(Excercise2.variance(Seq(2, 2, 2)) == Some(0))
+      assert(Excercise2.variance(Seq()) == None)
+  }
 }
