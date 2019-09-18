@@ -67,4 +67,9 @@ class Chapter4Suite extends FunSuite {
       assert(Excercise2.variance(Seq(2, 2, 2)) == Some(0))
       assert(Excercise2.variance(Seq()) == None)
   }
+
+  test("Excercise3 - map") {
+      assert(Excercise3.map2[Int, Int, Int](Some(2), Some(3))(_ + _) == Some(5))
+      assert(Excercise3.map2[Int, Int, Int](None, Some(3))(_ + _) == None)
+  }
 }

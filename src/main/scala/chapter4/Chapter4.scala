@@ -35,3 +35,10 @@ object Excercise2 {
         mean(xs).flatMap(m => mean(xs.map(x => math.pow(x - m, 2))))
     }
 }
+
+object Excercise3 {
+    def map2[A, B, C](oa: Option[A], ob: Option[B])(f: (A, B) => C): Option[C] = (oa, ob) match {
+        case (Some(a), Some(b)) => Some(f(a, b))
+        case (_, _) => None
+    }
+}
