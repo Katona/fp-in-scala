@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 trait Stream[+A] {
     def headOption: Option[A] = this match {
         case Empty => None
-        case Cons(h, t) => Some(h())
+        case Cons(h, _) => Some(h())
     }
     
     def toList: List[A] = {
@@ -41,7 +41,7 @@ object Stream {
     def empty[A]: Stream[A] = Empty
 
     def apply[A](as: A*): Stream[A] = {
-        return if (as.isEmpty) empty else  cons(as.head, apply(as.tail: _*))
+        if (as.isEmpty) empty else  cons(as.head, apply(as.tail: _*))
     }
 
 }
