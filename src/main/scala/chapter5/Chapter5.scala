@@ -7,23 +7,26 @@ trait Stream[+A] {
         case Empty => None
         case Cons(h, _) => Some(h())
     }
-    
+
     def toList: List[A] = {
         def go(s: Stream[A], acc: List[A]): List[A] = s match {
             case Empty => acc
             case Cons(h, t) => go(t(), h() :: acc)
         }
+
         go(this, Nil).reverse
     }
 
     def toListFast: List[A] = {
         val buf = new ListBuffer[A]
+
         def go(s: Stream[A]): List[A] = s match {
             case Cons(h, t) =>
                 buf += h()
                 go(t())
             case Empty => buf.toList
         }
+
         go(this)
     }
 
@@ -43,6 +46,18 @@ trait Stream[+A] {
         case Cons(h, t) if p(h()) => Stream.cons(h(), t().takeWhile(p))
         case _ => Stream.empty
     }
+
+    def foldRight[B](z: => B)(f: (A, => B) => B): B = this match {
+        case Cons(h, t) => f(h(), t().foldRight(z)(f))
+        case _ => z
+    }
+
+    def exist(p: A => Boolean): Boolean =
+        foldRight(false)((a, b) => p(a) || b)
+
+    def forAll(p: A => Boolean): Boolean =
+        foldRight(true)((a, b) => p(a) && b)
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
