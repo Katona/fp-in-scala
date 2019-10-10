@@ -58,6 +58,15 @@ trait Stream[+A] {
     def forAll(p: A => Boolean): Boolean =
         foldRight(true)((a, b) => p(a) && b)
 
+    def headOption2: Option[A] =
+        foldRight[Option[A]](None)((a, _) => Some(a))
+
+    def takeWhileWithFoldRight(p: A => Boolean): Stream[A] = {
+        foldRight[Stream[A]](Stream.empty){(a, b) =>
+            if (p(a)) Stream.cons(a, b)
+            else Stream.empty
+        }
+    }
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
