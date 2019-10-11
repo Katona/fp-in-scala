@@ -78,6 +78,7 @@ trait Stream[+A] {
     def append[B>:A](other: Stream[B]): Stream[B] = foldRight(other)((h, t) => Stream.cons(h, t))
 
     def flatMap[B](m: A => Stream[B]): Stream[B] = foldRight(Stream.empty[B])((h, t) => m(h).append(t))
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
@@ -91,6 +92,11 @@ object Stream {
     }
 
     def empty[A]: Stream[A] = Empty
+
+    def constant[A](a: A): Stream[A] = {
+        lazy val infiniteStream: Stream[A] = Stream.cons(a, infiniteStream)
+        infiniteStream
+    }
 
     def apply[A](as: A*): Stream[A] = {
         if (as.isEmpty) empty else  cons(as.head, apply(as.tail: _*))

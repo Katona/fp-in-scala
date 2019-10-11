@@ -87,4 +87,9 @@ class Chapter5Suite extends FunSuite {
     test("flatMap") {
         assert(Stream(1, 2, 3).flatMap(a => Stream(a, a)).toList == List(1, 1, 2, 2, 3, 3))
     }
+
+    test("constant") {
+        val constant = Stream.constant(1)
+        assert(constant.take(5).toList == List(1, 1, 1, 1, 1))
+    }
 }
