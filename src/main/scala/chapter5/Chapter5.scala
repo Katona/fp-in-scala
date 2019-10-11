@@ -70,6 +70,7 @@ trait Stream[+A] {
 
     def filter(p: A => Boolean): Stream[A] = this match {
         case Cons(h, t) if p(h()) => Stream.cons(h() , t().filter(p))
+        case Cons(h, t) if !p(h()) => t().filter(p)
         case _ => Stream.empty
     }
 }
