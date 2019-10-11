@@ -79,21 +79,21 @@ class Chapter5Suite extends FunSuite {
         assert(stream.filter(_ == 2).toList == List(2))
     }
 
-    test("append") {
+    test("5.7 - append") {
         assert(Stream(1, 2, 3).append(Stream(4, 5, 6)).toList == List(1, 2, 3, 4, 5, 6))
         assert(Stream(1, 2, 3).append(Stream.empty).toList == List(1, 2, 3))
     }
 
-    test("flatMap") {
+    test("5.7 - flatMap") {
         assert(Stream(1, 2, 3).flatMap(a => Stream(a, a)).toList == List(1, 1, 2, 2, 3, 3))
     }
 
-    test("constant") {
+    test("5.8 - constant") {
         val constant = Stream.constant(1)
         assert(constant.take(5).toList == List(1, 1, 1, 1, 1))
     }
 
-    test("from") {
+    test("5.9 - from") {
         assert(Stream.from(10).take(5).toList == List(10, 11, 12, 13, 14))
     }
 }
