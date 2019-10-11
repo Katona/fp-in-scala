@@ -68,16 +68,12 @@ trait Stream[+A] {
         }
     }
 
-    def map[B](mapper: A => B): Stream[B] = this match {
-        case Cons(h, t) => Stream.cons(mapper(h()), t().map(mapper))
-        case _ => Stream.empty
-    }
+    def map[B](mapper: A => B): Stream[B] = foldRight(Stream.empty[B])((h, t) => Stream.cons(mapper(h), t))
 
-    def filter(p: A => Boolean): Stream[A] = this match {
-        case Cons(h, t) if p(h()) => Stream.cons(h() , t().filter(p))
-        case Cons(h, t) if !p(h()) => t().filter(p)
-        case _ => Stream.empty
-    }
+    def filter(p: A => Boolean): Stream[A] = foldRight(Stream.empty[A])((h, t) => {
+        if (p(h)) Stream.cons(h, t)
+        else t
+    })
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
