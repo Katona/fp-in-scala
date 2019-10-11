@@ -92,4 +92,8 @@ class Chapter5Suite extends FunSuite {
         val constant = Stream.constant(1)
         assert(constant.take(5).toList == List(1, 1, 1, 1, 1))
     }
+
+    test("from") {
+        assert(Stream.from(10).take(5).toList == List(10, 11, 12, 13, 14))
+    }
 }
