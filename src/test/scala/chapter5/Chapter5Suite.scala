@@ -66,6 +66,12 @@ class Chapter5Suite extends FunSuite {
         assert(Stream.empty.headOption2.isEmpty)
     }
 
+    test("5.7 - map") {
+        val stream = Stream(1, 2, 3, 4)
+        assert(stream.map(_ * 2).toList == List(2, 4, 6, 8))
+        assert(Stream.empty[Int].map(_ * 2).toList == Nil)
+    }
+
     test("5.7 - filter") {
         val stream = Stream(1, 2, 3, 4)
         assert(stream.filter(_ > 2).toList == List(3, 4))
