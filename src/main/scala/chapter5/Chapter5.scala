@@ -74,6 +74,8 @@ trait Stream[+A] {
         if (p(h)) Stream.cons(h, t)
         else t
     })
+
+    def append[B>:A](other: Stream[B]): Stream[B] = foldRight(other)((h, t) => Stream.cons(h, t))
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]

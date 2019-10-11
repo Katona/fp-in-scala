@@ -78,4 +78,9 @@ class Chapter5Suite extends FunSuite {
         assert(stream.filter(_ < 2).toList == List(1))
         assert(stream.filter(_ == 2).toList == List(2))
     }
+
+    test("append") {
+        assert(Stream(1, 2, 3).append(Stream(4, 5, 6)).toList == List(1, 2, 3, 4, 5, 6))
+        assert(Stream(1, 2, 3).append(Stream.empty).toList == List(1, 2, 3))
+    }
 }
