@@ -83,4 +83,8 @@ class Chapter5Suite extends FunSuite {
         assert(Stream(1, 2, 3).append(Stream(4, 5, 6)).toList == List(1, 2, 3, 4, 5, 6))
         assert(Stream(1, 2, 3).append(Stream.empty).toList == List(1, 2, 3))
     }
+
+    test("flatMap") {
+        assert(Stream(1, 2, 3).flatMap(a => Stream(a, a)).toList == List(1, 1, 2, 2, 3, 3))
+    }
 }
