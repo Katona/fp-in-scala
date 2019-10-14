@@ -108,4 +108,15 @@ object Stream {
         def nextFib(prevPrev: Int, prev: Int): Stream[Int] = Stream.cons(prev, nextFib(prev, prev + prevPrev))
         nextFib(0, 1)
     }
+
+    def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = {
+        def go(s: S): Stream[A] = {
+            val next: Option[(A, S)] = f(s)
+            next match {
+                case Some((a, s)) => Stream.cons(a, go(s))
+                case None => Stream.empty
+            }
+        }
+        go(z)
+    }
 }
