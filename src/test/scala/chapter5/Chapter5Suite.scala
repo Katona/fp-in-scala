@@ -96,4 +96,8 @@ class Chapter5Suite extends FunSuite {
     test("5.9 - from") {
         assert(Stream.from(10).take(5).toList == List(10, 11, 12, 13, 14))
     }
+
+    test("6.0 - fibs") {
+        assert(Stream.fibs().take(5).toList == List(1, 2, 3, 5, 8))
+    }
 }
