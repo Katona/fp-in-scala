@@ -105,7 +105,7 @@ object Stream {
     def from(n: Int): Stream[Int] = Stream.cons(n, from(n + 1))
 
     def fibs(): Stream[Int] = {
-        def nextFib(prev: Int, prevPrev: Int): Stream[Int] = Stream.cons(prev + prevPrev, nextFib(prev + prevPrev, prev))
-        nextFib(1, 0)
+        def nextFib(prevPrev: Int, prev: Int): Stream[Int] = Stream.cons(prev, nextFib(prev, prev + prevPrev))
+        nextFib(0, 1)
     }
 }
