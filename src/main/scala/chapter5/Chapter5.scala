@@ -119,4 +119,12 @@ object Stream {
         }
         go(z)
     }
+
+    def fibs_1(): Stream[Int] = Stream.unfold((0, 1)){ case (prevPrev, prev) => Some(prev, (prev, prev + prevPrev))}
+
+    def from_1(n: Int): Stream[Int] = Stream.unfold(n)(v => Some(v, v + 1))
+
+    def ones_1(): Stream[Int] = Stream.unfold(1)(_ => Some(1, 1))
+
+    def constant_1(c: Int): Stream[Int] = Stream.unfold(c)(c => Some(c, c))
 }

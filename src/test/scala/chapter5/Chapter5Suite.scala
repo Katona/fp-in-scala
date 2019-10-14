@@ -106,6 +106,13 @@ class Chapter5Suite extends FunSuite {
         assert(Stream.unfold(1){
             case elem if (elem < 5) => Some((elem, elem + 1))
             case _ => None
-        }.toList == List(1, 2, 3, 4, 5))
+        }.toList == List(1, 2, 3, 4))
+    }
+
+    test("5.12 - fibs, from, ones, constant") {
+        assert(Stream.fibs_1().take(5).toList == List(1, 1, 2, 3, 5))
+        assert(Stream.from_1(5).take(5).toList == List(5, 6, 7, 8, 9))
+        assert(Stream.ones_1().take(5).toList == List(1, 1, 1, 1, 1))
+        assert(Stream.constant_1(8).take(5).toList == List(8, 8, 8, 8, 8))
     }
 }
