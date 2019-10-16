@@ -84,8 +84,8 @@ trait Stream[+A] {
         case Empty => None
     }
 
-    def take_1(n: Int): Stream[A] = Stream.unfold(this) {
-        case Cons(h, t) if (n > 0) => Some((h(), t().take_1(n - 1)))
+    def take_1(n: Int): Stream[A] = Stream.unfold((this, n)) {
+        case (Cons(h, t), n) if (n > 0) => Some((h(), (t(), n - 1)))
         case _ => None
     }
 
