@@ -115,4 +115,8 @@ class Chapter5Suite extends FunSuite {
         assert(Stream.ones_1().take(5).toList == List(1, 1, 1, 1, 1))
         assert(Stream.constant_1(8).take(5).toList == List(8, 8, 8, 8, 8))
     }
+
+    test("5.13 - map, take, takeWhile, zipWith, zipAll based on unfold") {
+        assert(Stream(1, 2, 3).map_1(_ * 2).toList == List(2, 4, 6))
+    }
 }

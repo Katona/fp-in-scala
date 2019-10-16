@@ -79,6 +79,11 @@ trait Stream[+A] {
 
     def flatMap[B](m: A => Stream[B]): Stream[B] = foldRight(Stream.empty[B])((h, t) => m(h).append(t))
 
+    def map_1[B](mapper: A => B): Stream[B] = Stream.unfold(this){
+        case Cons(h, t) => Some((mapper(h()), t()))
+        case Empty => None
+    }
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
