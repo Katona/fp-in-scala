@@ -79,9 +79,14 @@ trait Stream[+A] {
 
     def flatMap[B](m: A => Stream[B]): Stream[B] = foldRight(Stream.empty[B])((h, t) => m(h).append(t))
 
-    def map_1[B](mapper: A => B): Stream[B] = Stream.unfold(this){
+    def map_1[B](mapper: A => B): Stream[B] = Stream.unfold(this) {
         case Cons(h, t) => Some((mapper(h()), t()))
         case Empty => None
+    }
+
+    def take_1(n: Int): Stream[A] = Stream.unfold(this) {
+        case Cons(h, t) if (n > 0) => Some((h(), t().take_1(n - 1)))
+        case _ => None
     }
 
 }
