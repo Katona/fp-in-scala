@@ -121,6 +121,21 @@ class Chapter5Suite extends FunSuite {
         assert(Stream(1, 2, 3, 4).take_1(2).toList == List(1, 2))
         assert(Stream(1, 2, 3, 4).takeWhile_1(_ < 3).toList == List(1, 2))
         assert(Stream(1, 2, 3).zipWith(Stream(3, 2, 1))(_ + _).toList == List(4, 4, 4))
-        assert(Stream(1, 2, 3).zipWith(Stream(3, 2, 1, 0))(_ + _).toList == List(4, 4, 4, 0))
+        assert(Stream(1, 2, 3).zipWith(Stream(3, 2, 1, 0))(_ + _).toList == List(4, 4, 4))
+        assert(Stream(1, 2).zipAllWith(Stream(3, 2, 1, 0))((_, _)).toList == List(
+            (Some(1), Some(3)),
+            (Some(2), Some(2)),
+            (None, Some(1)),
+            (None, Some(0))
+            )
+        )
+        assert(Stream(1, 2).zipAll(Stream(3, 2, 1, 0)).toList == List(
+            (Some(1), Some(3)),
+            (Some(2), Some(2)),
+            (None, Some(1)),
+            (None, Some(0))
+            )
+        )
+
     }
 }

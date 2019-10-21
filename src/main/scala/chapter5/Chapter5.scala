@@ -96,10 +96,18 @@ trait Stream[+A] {
 
     def zipWith[B, C](other: Stream[B])(c: (A, B) => C) = Stream.unfold((this, other)) {
         case (Cons(h1, t1), Cons(h2, t2)) => Some((c(h1(), h2()), (t1(), t2())))
-        case (s1 @ Empty, Cons(h2, t2)) => Some((h2(), (s1, t2())))
-        case (Cons(h1, t1), s2 @ Empty) => Some((h1(), (t1(), s2)))
         case _ => None
     }
+
+    def zipAllWith[B, C](other: Stream[B])(c: (Option[A], Option[B]) => C): Stream[C] = Stream.unfold((this, other)) {
+        case (Cons(h1, t1), Cons(h2, t2)) => Some(c(Some(h1()), Some(h2())), (t1(), t2()))
+        case (Empty, Cons(h2, t2)) => Some(c(None, Some(h2())), (Empty, t2()))
+        case (Cons(h1, t1), Empty) => Some(c(Some(h1()), None), (t1(), Empty))
+        case _ => None
+    }
+
+    def zipAll[B](other: Stream[B]): Stream[(Option[A], Option[B])] = zipAllWith(other)((_, _))
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
