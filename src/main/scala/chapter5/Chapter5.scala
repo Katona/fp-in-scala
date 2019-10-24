@@ -112,6 +112,11 @@ trait Stream[+A] {
         case (a, b) => a == b
     }
 
+    def tails: Stream[Stream[A]] = Stream.unfold(this) { 
+        case Empty => None
+        case current @ Cons(h, t) => Some((current, current.t()))
+    }
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]

@@ -144,4 +144,10 @@ class Chapter5Suite extends FunSuite {
         assert(Stream(1, 2, 3).startsWith(Stream(1, 2, 3, 4)) == false)
         assert(Stream(1, 2, 3).startsWith(Stream(4, 2, 3)) == false)
     }
+
+    test("5.15 - tails") {
+        assert(Stream(1, 2).tails.map(s => s.toList).toList == List(List(1, 2), List(2)))
+        assert(Stream(1, 2, 3).tails.map(s => s.toList).toList == List(List(1, 2, 3), List(2, 3), List(3)))
+        assert(Stream.empty[Nothing].tails.map(s => s.toList).toList == Nil)
+    }
 }
