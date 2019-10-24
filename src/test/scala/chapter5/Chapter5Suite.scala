@@ -138,4 +138,10 @@ class Chapter5Suite extends FunSuite {
         )
 
     }
+
+    test("5.14 - startsWith") {
+        assert(Stream(1, 2, 3).startsWith(Stream(1, 2)) == true)
+        assert(Stream(1, 2, 3).startsWith(Stream(1, 2, 3, 4)) == false)
+        assert(Stream(1, 2, 3).startsWith(Stream(4, 2, 3)) == false)
+    }
 }

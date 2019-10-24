@@ -108,6 +108,10 @@ trait Stream[+A] {
 
     def zipAll[B](other: Stream[B]): Stream[(Option[A], Option[B])] = zipAllWith(other)((_, _))
 
+    def startsWith[A](s: Stream[A]): Boolean = zipAllWith(s)((_, _)).takeWhile(!_._2.isEmpty)forAll{
+        case (a, b) => a == b
+    }
+
 }
 
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
