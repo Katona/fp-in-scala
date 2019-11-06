@@ -114,7 +114,13 @@ trait Stream[+A] {
 
     def tails: Stream[Stream[A]] = Stream.unfold(this) { 
         case Empty => None
-        case current @ Cons(h, t) => Some((current, current.t()))
+        case current @ Cons(_, _) => Some((current, current.t()))
+    }
+
+    def scanRight[B](z: => B)(f: (A, => B) => B): Stream[B] = this.tails.map(_.foldRight(z)(f))
+
+    def scanRight_1[B](z: => B)(f: (A, => B) => B): Stream[B] = this.foldRight(Stream(z)) {
+        case (current, scanned @ Cons(h, _)) => Stream.cons(f(current, h()), scanned)
     }
 
 }

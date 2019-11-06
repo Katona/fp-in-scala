@@ -150,4 +150,9 @@ class Chapter5Suite extends FunSuite {
         assert(Stream(1, 2, 3).tails.map(s => s.toList).toList == List(List(1, 2, 3), List(2, 3), List(3)))
         assert(Stream.empty[Nothing].tails.map(s => s.toList).toList == Nil)
     }
+
+    test("5.16 - scanRight") {
+        assert(Stream(1, 2, 3).scanRight(0)(_ + _).toList == Stream(6, 5, 3).toList)
+        assert(Stream(1, 2, 3).scanRight_1(0)(_ + _).toList == Stream(6, 5, 3, 0).toList)
+    }
 }
