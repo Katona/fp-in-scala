@@ -14,4 +14,9 @@ class Chapter6Suite extends FunSuite {
     assert(Rng.nonNegativeInt(Rng.nonNegativeInt(rng)._2)._1 >=0)
   }
 
+  test("6.2 - nextDouble") {
+    val rng = SimpleRng(1)
+    assert(Rng.nextDouble(rng)._1 == 2.140231792282322E-303)
+  }
+
 }

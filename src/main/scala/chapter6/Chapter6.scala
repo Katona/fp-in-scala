@@ -23,4 +23,9 @@ object Rng {
       nonNegativeInt(newRng)
     }
   }
+
+  def nextDouble(rng: Rng): (Double, Rng) = {
+    val (n, nextRng) = rng.nextInt
+    (n.toDouble / Double.MaxValue, nextRng)
+  }
 }
