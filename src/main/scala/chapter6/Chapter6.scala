@@ -45,4 +45,14 @@ object Rng {
     val (d3, n3) = Rng.nextDouble(n2)
     ((d1, d2, d3), n3)
   }
+
+  def ints(count: Int)(rng: Rng): (List[Int], Rng) = {
+    (1 to count).foldLeft((List[Int](), rng)) {
+      case ((l, r), _) => {
+        val (i, nextRng) = r.nextInt
+        val nextList: List[Int] = l :+ i
+        (nextList, nextRng)
+      }
+    }
+  }
 }
