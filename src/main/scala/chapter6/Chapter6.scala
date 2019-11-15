@@ -55,4 +55,18 @@ object Rng {
       }
     }
   }
+
+  /**
+   * Alternative implementation based on Stream.unfold.
+   */
+  def ints_2(count: Int)(rng: Rng): (List[Int], Rng) = {
+    // We need to keep track the Rng so that we can return it at the end.
+    var localRng = rng
+    val ints = chapter5.Stream.unfold[Int, Rng](rng)(rng => {
+      val (i, rng2) = rng.nextInt
+      localRng = rng
+      Some(i, rng2)
+    }).take(count).toList
+    (ints, localRng)
+  }
 }

@@ -19,9 +19,15 @@ class Chapter6Suite extends FunSuite {
     assert(Rng.nextDouble(rng)._1 == 2.140231792282322E-303)
   }
 
-  test("6.3 - ints") {
+  test("6.4 - ints") {
     val rng = SimpleRng(1)
     val ints = Rng.ints(10)(rng)
+    assert(ints._1.size == 10)
+  }
+
+  test("6.4 ints_2") {
+    val rng = SimpleRng(1)
+    val ints = Rng.ints_2(10)(rng)
     assert(ints._1.size == 10)
   }
 }
